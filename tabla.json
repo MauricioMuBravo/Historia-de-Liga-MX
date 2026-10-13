@@ -1,0 +1,92 @@
+{
+  "jornada": 11,
+  "actualizado": "2026-10-12T20:10:00-06:00",
+  "fuente": "Informador, TV Azteca, Heraldo de México (jornada 11 del Apertura 2026)",
+  "equipos": {
+    "AME": {
+      "pj": 10,
+      "pts": 21
+    },
+    "TOL": {
+      "pj": 11,
+      "pts": 20
+    },
+    "QRO": {
+      "pj": 11,
+      "pts": 20
+    },
+    "CHI": {
+      "pj": 11,
+      "pts": 19
+    },
+    "LEO": {
+      "pj": 11,
+      "pts": 18
+    },
+    "ATS": {
+      "pj": 11,
+      "pts": 18
+    },
+    "CAZ": {
+      "pj": 11,
+      "pts": 17
+    },
+    "TIJ": {
+      "pj": 10,
+      "pts": 15
+    },
+    "PUE": {
+      "pj": 11,
+      "pts": 15
+    },
+    "MTY": {
+      "pj": 11,
+      "pts": 14
+    },
+    "PAC": {
+      "pj": 11,
+      "pts": 13
+    },
+    "PUM": {
+      "pj": 11,
+      "pts": 13
+    },
+    "TIG": {
+      "pj": 11,
+      "pts": 13
+    },
+    "SAN": {
+      "pj": 11,
+      "pts": 13
+    },
+    "SLP": {
+      "pj": 11,
+      "pts": 12
+    },
+    "ATE": {
+      "pj": 11,
+      "pts": 11
+    },
+    "NEC": {
+      "pj": 11,
+      "pts": 9
+    },
+    "JUA": {
+      "pj": 11,
+      "pts": 4
+    }
+  },
+  "fijos": [
+    {
+      "l": "AME",
+      "v": "TIJ",
+      "azar": true
+    }
+  ],
+  "resultados": [
+    "Puebla 1-1 León",
+    "Tigres 3-2 Toluca",
+    "América 1-1 Monterrey",
+    "Pumas 3-3 Cruz Azul"
+  ]
+}

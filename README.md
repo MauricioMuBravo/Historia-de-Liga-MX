@@ -1,6 +1,3 @@
-[README.md](https://github.com/user-attachments/files/33366707/README.md)
-# Historia-de-Liga-MX
-Conoce la historia de la liga de futbol de México, L I G A M X
 # Liga MX 1943–2026 · infografía interactiva
 
 Creada por **Ing. Mauricio Muñoz Bravo**.
@@ -9,18 +6,19 @@ Página web estática (HTML, CSS y JavaScript sin frameworks) con la historia co
 
 ## Estructura
 
+Todos los archivos viven juntos en la raíz del repositorio:
+
 ```
-index.html              la página
-css/estilos.css         todos los estilos (claro y oscuro)
-js/app.js               toda la lógica y los datos
-js/vendor/three.min.js  three.js r128 (visor 3D de los trofeos)
-datos/tabla.json        tabla de posiciones que alimenta el pronóstico
-assets/
-  audio/                himno.mp3
-  logos/                logos de la Liga MX y de la FMF
-  escudos/              escudos de los clubes (.webp, 256 px)
-  trofeos/              fotos de los dos trofeos (respaldo si no hay WebGL)
-  video/                video de portada (.webm y .mp4) y su imagen previa
+index.html            la página
+estilos.css           todos los estilos (claro y oscuro)
+app.js                toda la lógica y los datos
+three.min.js          three.js r128 (visor 3D de los trofeos)
+tabla.json            tabla de posiciones que alimenta el pronóstico
+himno.mp3             himno
+logo-liga-mx.webp, logo-fmf-1a-div.webp   logos
+*.webp                escudos de los clubes (america.webp, chivas.webp, ...)
+clasico.webp, moderno.webp   fotos de los dos trofeos (respaldo si no hay WebGL)
+portada.webm, portada.mp4, portada-poster.webp   video de portada
 ```
 
 ## Cómo verla en tu computadora
@@ -43,7 +41,7 @@ Todas las rutas son relativas, así que funciona igual en un subdirectorio.
 
 ## Cómo actualizar la tabla del pronóstico
 
-El pronóstico y la caja «Hoy» de la portada leen `datos/tabla.json`. Para actualizarlos, edita ese archivo y súbelo:
+El pronóstico y la caja «Hoy» de la portada leen `tabla.json`. Para actualizarlos, edita ese archivo y súbelo:
 
 ```json
 {
@@ -58,8 +56,8 @@ El pronóstico y la caja «Hoy» de la portada leen `datos/tabla.json`. Para act
 - Los 18 equipos son obligatorios: `AME TOL QRO CHI LEO ATS CAZ TIJ PUE MTY PAC PUM TIG SAN SLP ATE NEC JUA`.
 - `pj` son los partidos jugados (1 a 17) y `pts` los puntos. `dg` (diferencia de gol) es opcional, pero debe venir en los 18 equipos o en ninguno.
 - `fijos` son los partidos pendientes que ya se conocen. `azar: true` significa que no se sabe quién es local y se sortea.
-- `actualizado` debe ser una fecha con zona horaria. Si el archivo es más viejo que los datos de respaldo de `js/app.js`, no se usa.
-- Si el archivo falta o es inválido, la página usa los datos de respaldo de `js/app.js` (tabla tras la jornada 11).
+- `actualizado` debe ser una fecha con zona horaria. Si el archivo es más viejo que los datos de respaldo de `app.js`, no se usa.
+- Si el archivo falta o es inválido, la página usa los datos de respaldo de `app.js` (tabla tras la jornada 11).
 
 ## Notas
 
