@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Liga MX 1943–2026</title>
+<meta name="author" content="Ing. Mauricio Muñoz Bravo">
+<meta name="description" content="Infografía interactiva de la Liga MX: todos los campeones desde 1943, finales, sequías, comparador de clubes, mapa, trofeos en 3D y pronóstico del Apertura 2026.">
+<link rel="icon" href="assets/logos/logo-liga-mx.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<nav class="menu" aria-label="Secciones">
+  <span class="progreso-scroll" id="progreso-scroll" aria-hidden="true"></span>
+  <div class="contenedor">
+    <span class="marca">Liga MX</span>
+    <ul>
+      <li><a href="#pronostico">Pronóstico</a></li>
+      <li><a href="#ranking">Ranking</a></li>
+      <li><a href="#campeones">Campeones</a></li>
+      <li><a href="#finales">Finales</a></li>
+      <li><a href="#sequias">Sequías</a></li>
+      <li><a href="#comparador">Comparador</a></li>
+      <li><a href="#dinastias">Dinastías</a></li>
+      <li><a href="#mapa">Mapa</a></li>
+      <li><a href="#tecnicos">Técnicos</a></li>
+      <li><a href="#goles">Goles</a></li>
+      <li><a href="#trofeos">Trofeos</a></li>
+      <li><a href="#identidad">Logos</a></li>
+      <li><a href="#datos">Datos</a></li>
+      <li><a href="#juego">Juego</a></li>
+      <li><a href="#ruleta">Ruleta</a></li>
+    </ul>
+    <button class="boton-tema boton-himno" id="boton-himno" type="button" data-himno aria-pressed="false" aria-label="Escuchar el himno"><span class="ico">♪</span> <span class="txt">Himno</span></button>
+    <button class="boton-tema boton-icono" id="boton-mudo" type="button" data-himno aria-pressed="false" aria-label="Silenciar el himno"></button>
+    <button class="boton-tema" id="boton-tema" type="button">Tema</button>
+  </div>
+</nav>
+
+<div class="contenedor">
+<header class="portada">
+  <h1 class="solo-lectores">Liga MX 1943–2026 · Primera División de México, era profesional</h1>
+  <div class="video-portada">
+    <video id="video-portada" poster="assets/video/portada-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="La historia de la Liga MX: de los inicios a la liguilla"><source src="assets/video/portada.webm" type="video/webm"><source src="assets/video/portada.mp4" type="video/mp4"></video>
+  </div>
+  <p class="entradilla">Cada franja es un campeonato, de izquierda a derecha, pintada con el color del club que levantó el trofeo. Pasa el dedo o el cursor por encima para leerlos uno por uno.</p>
+  <div class="codigo-barras" id="codigo-barras" role="img" aria-label="Todos los campeones de la Liga MX en orden cronológico"></div>
+  <div class="lectura" id="lectura-codigo" aria-live="polite"></div>
+  <div class="cifras">
+    <div><strong id="cifra-total">–</strong><small>campeonatos</small></div>
+    <div><strong id="cifra-clubes">–</strong><small>clubes campeones</small></div>
+    <div><strong id="cifra-america">–</strong><small>títulos de América</small></div>
+    <div><strong id="cifra-formatos">4</strong><small>formatos de torneo</small></div>
+  </div>
+  <div class="hoy" id="hoy"><b id="hoy-fecha">Hoy · 12 de octubre de 2026</b><span id="hoy-texto">Cruz Azul es el campeón vigente (Clausura 2026, décimo título) y también ganó el Campeón de Campeones 2026 ante Toluca. En el Apertura 2026, tras la jornada 11, América lidera con 21 puntos, seguido de Toluca y Querétaro con 20.</span> <a href="#pronostico">Mira mi pronóstico del campeón.</a></div>
+</header>
+
+<section id="pronostico">
+  <p class="sobretitulo">Pronóstico · Apertura 2026</p>
+  <h2>¿Quién será campeón?</h2>
+  <p class="subtitulo">Simulé miles de veces lo que falta del torneo: lo que queda de la fase regular y la liguilla de ocho equipos. Mueve la barra para decidir qué pesa más, la tabla de hoy o lo que se esperaba en julio.</p>
+  <p class="pron-fuente" id="pron-fuente">Tabla al 12 de octubre de 2026, tras la jornada 11.</p>
+  <div class="pron-panel">
+    <p class="pron-veredicto" id="pron-veredicto" aria-live="polite"></p>
+    <p class="pron-sub" id="pron-sub"></p>
+    <div class="pron-controles">
+      <div class="pron-deslizador">
+        <label for="pron-peso">Qué pesa más</label>
+        <span>Momios de julio</span>
+        <input type="range" id="pron-peso" min="0" max="100" step="10" value="50">
+        <span>Tabla de hoy</span>
+      </div>
+      <div class="pron-deslizador">
+        <label for="pron-parejo">Qué tan parejo es el torneo</label>
+        <span>Mandan los favoritos</span>
+        <input type="range" id="pron-parejo" min="0" max="100" step="10" value="70">
+        <span>Todos parejos</span>
+      </div>
+      <button class="pron-boton claro" id="pron-otra" type="button">Volver a simular</button>
+    </div>
+    <p class="pron-sub" id="pron-peso-texto"></p>
+  </div>
+  <div class="pron-cab"><span></span><span>Probabilidad de ser campeón</span><span>Liguilla</span><span>Final</span></div>
+  <div id="pron-filas"></div>
+  <p class="nota">«Liguilla» es la probabilidad de terminar entre los ocho primeros y «Final» la de llegar a la final. Las probabilidades de campeón suman 100%.</p>
+  <div class="pron-panel pron-torneo">
+    <button class="pron-boton" id="pron-un-torneo" type="button">Simular un torneo completo</button>
+    <div id="pron-un-torneo-salida" aria-live="polite"></div>
+  </div>
+  <details class="pron-detalles">
+    <summary id="pron-tabla-titulo">Tabla de posiciones</summary>
+    <div style="overflow-x:auto"><table class="pron-tabla" id="pron-tabla"></table></div>
+    <p class="nota" id="pron-tabla-nota"></p>
+    <ul id="pron-resultados" hidden></ul>
+  </details>
+  <details class="pron-detalles">
+    <summary>Cómo se calculó y qué tan seguro es</summary>
+    <ul>
+      <li><b>Fuerza de cada equipo.</b> Mezcla dos cosas: lo que cotizaban las casas de apuestas antes del torneo (Caliente, julio) y los puntos por partido que lleva cada equipo, que cuentan menos mientras menos partidos haya jugado. La barra de arriba decide la mezcla. La segunda barra, «qué tan parejo es el torneo», encoge las diferencias entre equipos: a la derecha todos se acercan y el resultado depende más de la liguilla y del azar que de quién llegue arriba.</li>
+      <li><b>Cada partido.</b> Se simulan goles con una distribución de Poisson según la diferencia de fuerza y una pequeña ventaja de local. Los goles sirven para el desempate por diferencia de gol.</li>
+      <li><b>Lo que queda.</b> Los partidos pendientes que se conocen van como están en el calendario. Del resto del torneo no tengo el calendario completo, así que cada equipo juega los partidos que le faltan contra rivales sorteados al azar.</li>
+      <li><b>De dónde salen los datos.</b> La tabla sale de un archivo de datos que se actualiza con los resultados de cada jornada, sin que nadie la acomode a mano dentro de la página. El pronóstico se recalcula con esa tabla. Si el archivo no se puede leer, ves los últimos datos guardados en la página, con su fecha.</li>
+      <li><b>Liguilla.</b> Califican los ocho primeros, sin repechaje. Cuartos y semifinales a ida y vuelta, donde el mejor ubicado avanza si empatan el global. Supuse que en semifinales se reubica a los equipos por su lugar en la tabla. La final se decide en penales si hay empate.</li>
+      <li><b>Lo que no sabe el modelo.</b> Lesiones, convocatorias, bajas y altas, el calendario real y la diferencia de gol que ya llevan los equipos (el desempate solo usa los goles de los partidos que faltan). Querétaro, León, Atlas, Puebla, Tijuana y los equipos de abajo no tenían cotización en las fuentes que encontré, así que su punto de partida es una estimación mía.</li>
+      <li><b>Cómo leerlo.</b> Un 20% significa uno de cada cinco torneos simulados, no una certeza. Es un ejercicio de probabilidad para esta página, no una recomendación de apuestas.</li>
+    </ul>
+  </details>
+</section>
+
+<section id="ranking">
+  <p class="sobretitulo">Títulos acumulados</p>
+  <h2>La carrera por la estrella</h2>
+  <p class="subtitulo">Mueve la barra o dale a reproducir y mira cómo cambian los puestos año con año. Las barras resaltadas ganaron título ese año.</p>
+  <div class="controles-carrera">
+    <button class="reproducir" id="reproducir" type="button">▶ Reproducir</button>
+    <div class="anio mono" id="anio">2026</div>
+    <input type="range" id="control-anio" min="1944" max="2026" step="1" value="2026" aria-label="Año">
+  </div>
+  <div class="campeones-anio" id="campeones-anio" aria-live="polite"></div>
+  <div class="carrera" id="carrera"></div>
+</section>
+
+<section id="campeones">
+  <p class="sobretitulo">Línea del tiempo</p>
+  <h2>Todos los campeones</h2>
+  <p class="subtitulo">Elige un club para iluminar sus títulos. Toca cualquier cuadro para ver su historia y su final. Los marcadores van en el orden de los partidos y con los goles del campeón primero.</p>
+  <div class="etiquetas" id="etiquetas-club"></div>
+  <div class="detalle" id="detalle" aria-live="polite"></div>
+  <div id="eras"></div>
+</section>
+
+<section id="finales">
+  <p class="sobretitulo">Finales</p>
+  <h2>Los que se quedaron a un paso</h2>
+  <p class="subtitulo">Subcampeonatos por club y las finales que se definieron fuera del tiempo normal. Antes de 1970 el subcampeón era el segundo lugar de la tabla, no un rival de final.</p>
+  <div class="dos-columnas">
+    <div>
+      <h3>Más subcampeonatos</h3>
+      <div id="subcampeones"></div>
+    </div>
+    <div>
+      <h3>Cómo se decidieron</h3>
+      <div class="registros" id="como-se-definieron"></div>
+      <ul class="lista-chica" id="lista-penales"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="sequias">
+  <p class="sobretitulo">Esperas</p>
+  <h2>Sequías</h2>
+  <p class="subtitulo">Años desde el último título de cada club de la liga actual, y las esperas más largas que terminaron en campeonato.</p>
+  <div class="dos-columnas">
+    <div>
+      <h3>Hoy, club por club</h3>
+      <div id="sequias-actuales"></div>
+    </div>
+    <div>
+      <h3>Las que se rompieron</h3>
+      <div id="esperas-rotas"></div>
+      <p class="nota">Los años son la diferencia entre el año de un título y el del siguiente. Algunas fuentes cuentan un año más en el caso de Atlante.</p>
+    </div>
+  </div>
+</section>
+
+<section id="comparador">
+  <p class="sobretitulo">Frente a frente</p>
+  <h2>Comparador de clubes</h2>
+  <p class="subtitulo">Elige dos clubes y mira sus títulos por década y cómo les ha ido cuando se enfrentaron en una final.</p>
+  <div class="comparador-controles">
+    <label for="club-a" class="mono">Club A</label><select id="club-a"></select>
+    <span>contra</span>
+    <label for="club-b" class="mono">Club B</label><select id="club-b"></select>
+  </div>
+  <div id="comparacion"></div>
+</section>
+
+<section id="dinastias">
+  <p class="sobretitulo">Rachas</p>
+  <h2>Dinastías</h2>
+  <p class="subtitulo">Los momentos en que un mismo club se quedó con el trofeo una y otra vez.</p>
+  <div class="dinastias" id="lista-dinastias"></div>
+</section>
+
+<section id="mapa">
+  <p class="sobretitulo">Geografía</p>
+  <h2>De dónde son los campeones</h2>
+  <p class="subtitulo">Cada círculo es una ciudad y su tamaño depende de los títulos de sus clubes. Toca uno para ver quién ganó.</p>
+  <div class="mapa-contenedor">
+    <div class="mapa"><svg id="mapa-svg" viewBox="0 0 860 550" role="img" aria-label="Mapa de México con las ciudades de los clubes campeones"></svg></div>
+    <div>
+      <div class="lista-ciudades" id="lista-ciudades"></div>
+      <p class="nota" id="nota-mapa"></p>
+    </div>
+  </div>
+</section>
+
+<section id="tecnicos">
+  <p class="sobretitulo">Banquillo</p>
+  <h2>Técnicos campeones</h2>
+  <p class="subtitulo">Los entrenadores con más títulos de liga. Cuatro de ellos han ganado con cuatro clubes distintos.</p>
+  <div id="lista-tecnicos"></div>
+  <p class="nota">Lista de 90min de 2020, con Antonio Mohamed actualizado con sus dos títulos de Toluca en 2025. Otras listas cuentan también copas y títulos internacionales, por eso suman más.</p>
+</section>
+
+<section id="goles">
+  <p class="sobretitulo">Goles</p>
+  <h2>Los que más la metieron</h2>
+  <p class="subtitulo">El brasileño Cabinho sigue como máximo goleador histórico. Entre los mexicanos manda Carlos Hermosillo.</p>
+  <div class="dos-columnas">
+    <div>
+      <h3>Goles en toda la historia</h3>
+      <div id="goleadores"></div>
+      <p class="nota">Las cifras de goleadores cambian según la fuente y el criterio (liga y liguilla juntas o separadas). Aquí uso la tabla histórica de Wikipedia para Cabinho y Hermosillo y las listas de Mediotiempo para Borgetti y Cardozo.</p>
+    </div>
+    <div>
+      <h3>Récords que siguen en pie</h3>
+      <div class="registros" id="lista-records"></div>
+    </div>
+  </div>
+</section>
+
+<section id="trofeos">
+  <p class="sobretitulo">Piezas de museo</p>
+  <h2>Los dos trofeos</h2>
+  <p class="subtitulo">El de siempre y el de hoy, en 3D. Arrastra para girar, usa la rueda o pellizca para acercar y toca los números para ver cada detalle.</p>
+  <div class="etiquetas" id="pestanas-trofeo"></div>
+  <div class="visor-contenedor">
+    <div class="visor" id="visor-trofeo">
+      <canvas id="lienzo-trofeo" aria-label="Modelo 3D del trofeo, gira con el dedo o el cursor" role="img"></canvas>
+      <div class="pines" id="pines-trofeo"></div>
+      <img id="foto-trofeo" alt="Foto del trofeo" hidden>
+      <div class="visor-barra">
+        <button type="button" id="boton-giro" aria-pressed="false">Giro automático</button>
+        <button type="button" id="boton-foto" aria-pressed="false">Ver foto</button>
+        <button type="button" id="boton-reiniciar">Reiniciar</button>
+        <span class="uso" id="uso-visor">Arrastra para girar</span>
+      </div>
+    </div>
+    <div class="visor-info">
+      <h3 id="trofeo-titulo"></h3>
+      <p class="resumen" id="trofeo-resumen"></p>
+      <ol class="puntos-lista" id="lista-puntos"></ol>
+      <div class="punto-detalle" id="punto-detalle" aria-live="polite"></div>
+      <dl class="ficha" id="ficha-trofeo"></dl>
+    </div>
+  </div>
+  <p class="nota">Los modelos son una interpretación hecha para esta página a partir de fotos; no son réplicas exactas. En el trofeo actual las 18 placas del pedestal llevan los escudos de los clubes, en un orden decorativo; en el clásico son placas genéricas. Las cifras del trofeo actual cambian según la fuente: ClaroSports y Wikipedia dan 47 cm y 9 kg, y otra nota habla de 37 cm y 10 kg.</p>
+</section>
+
+<section id="identidad">
+  <p class="sobretitulo">Identidad</p>
+  <h2>Logos y himno</h2>
+  <p class="subtitulo">Cómo se ha visto y cómo suena la liga. Dale play al himno mientras recorres la página.</p>
+  <div class="himno-tarjeta">
+    <button class="boton-himno-grande" id="boton-himno-grande" type="button" data-himno>▶ Escuchar el himno</button>
+    <div class="himno-progreso">
+      <input type="range" id="himno-progreso" min="0" max="1000" value="0" step="1" aria-label="Posición del himno">
+      <span class="mono" id="himno-tiempo">0:00 / 2:14</span>
+    </div>
+    <div class="himno-volumen">
+      <button class="boton-tema boton-icono" id="boton-mudo-grande" type="button" data-himno aria-pressed="false" aria-label="Silenciar el himno"></button>
+      <input type="range" id="himno-volumen" min="0" max="100" value="70" step="5" aria-label="Volumen" data-himno>
+    </div>
+    <p class="himno-estado" id="himno-estado" aria-live="polite">El himno de la Liga MX suena al abrir la página. Puedes pausarlo o silenciarlo cuando quieras.</p>
+    <audio id="himno" preload="none" src="assets/audio/himno.mp3"></audio>
+  </div>
+  <div class="logos-linea">
+    <div class="logo-tarjeta">
+      <div class="logo-caja"><img src="assets/logos/logo-fmf-1a-div.webp" alt="Logo FMF Oficial 1a div: rectángulo mitad verde y mitad rojo con la silueta blanca de un futbolista"></div>
+      <div class="anios">1991 – 2012</div>
+      <h3>FMF Oficial · 1a div</h3>
+      <p>Un rectángulo mitad verde y mitad rojo con la silueta de un futbolista y un balón. Según Logos World fue la imagen de la liga durante más de veinte años.</p>
+    </div>
+    <div class="logo-tarjeta">
+      <div class="logo-caja"><img src="assets/logos/logo-liga-mx.webp" alt="Logo de la Liga MX: una gran X formada por dos marcas, una roja y otra verde, con cuatro piezas grises a los lados"></div>
+      <div class="anios">Desde julio de 2012</div>
+      <h3>Liga MX</h3>
+      <p>Se presentó con el nuevo nombre, un nuevo himno y el lema «Siente tu Liga», y se usó desde el Apertura 2012. Una X hecha con dos marcas, una roja y una verde, rodeada de cuatro piezas grises.</p>
+    </div>
+  </div>
+</section>
+
+<section id="datos">
+  <p class="sobretitulo">Datos curiosos</p>
+  <h2>Lo que no sabías</h2>
+  <p class="subtitulo">Filtra por tipo de dato.</p>
+  <div class="etiquetas" id="etiquetas-datos"></div>
+  <div class="datos" id="lista-datos"></div>
+</section>
+
+<section id="juego">
+  <p class="sobretitulo">Juego</p>
+  <h2>¿Quién ganó?</h2>
+  <p class="subtitulo">Te sale un torneo al azar y eliges al campeón. Diez rondas.</p>
+  <div class="cuestionario" id="caja-juego"></div>
+</section>
+
+<section id="ruleta">
+  <p class="sobretitulo">Para jugar · Apertura 2026</p>
+  <h2>La ruleta del campeón</h2>
+  <p class="subtitulo">Gira y mira a quién le toca el trofeo en este torneo. Puedes repartir la ruleta en partes iguales o dar más espacio a los equipos que mi pronóstico ve más fuertes.</p>
+  <div class="ruleta">
+    <div class="ruleta-rueda">
+      <span class="ruleta-aguja" aria-hidden="true"></span>
+      <canvas id="ruleta-lienzo" role="img" aria-label="Ruleta con los dieciocho equipos de la Liga MX"></canvas>
+    </div>
+    <div class="ruleta-panel">
+      <div class="ruleta-modos" role="group" aria-label="Cómo se reparte la ruleta">
+        <button type="button" id="ruleta-modo-iguales" aria-pressed="true">Partes iguales</button>
+        <button type="button" id="ruleta-modo-pron" aria-pressed="false">Según mi pronóstico</button>
+      </div>
+      <button class="ruleta-girar" id="ruleta-girar" type="button">Girar la ruleta</button>
+      <div class="ruleta-resultado" id="ruleta-resultado" aria-live="polite"><p class="ruleta-vacio">Aquí aparece tu campeón del Apertura 2026.</p></div>
+      <div class="ruleta-historial" id="ruleta-historial"></div>
+      <p class="nota" id="ruleta-nota">Es un juego de azar. Mi pronóstico serio, con probabilidades calculadas, está más arriba.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="credito">Infografía creada por <strong>Ing. Mauricio Muñoz Bravo</strong>.</p>
+  <p><strong>Cómo se cuenta.</strong> Títulos de liga desde la temporada 1943-44, con los torneos largos, los cortos y los especiales de 1970, 1985 y 1986. Algunos medios cuentan distinto por el periodo amateur o por torneos especiales. El Clausura 2020 se canceló por la pandemia y no tiene campeón. Datos al 10 de octubre de 2026.</p>
+  <p>Los escudos pertenecen a sus clubes y se muestran tal como los proporcionó el autor de la página. Los clubes sin escudo en la página llevan un escudo genérico con su color.</p>
+  <p><strong>Fuentes</strong></p>
+  <ul>
+    <li><a href="https://es.wikipedia.org/wiki/Primera_Divisi%C3%B3n_de_M%C3%A9xico" target="_blank" rel="noopener">Wikipedia, Primera División de México</a></li>
+    <li><a href="https://www.clarosports.com/futbol/liga-mx/todos-los-campeones-de-la-liga-mx-palmares-historico-del-futbol-mexicano-quienes-son-los-mas-ganadores/" target="_blank" rel="noopener">ClaroSports, palmarés histórico</a></li>
+    <li><a href="https://www.clarosports.com/futbol/liga-mx/la-decima-cruz-azul-es-campeon-del-clausura-2026-de-la-liga-mx-con-una-voltereta-sobre-pumas/" target="_blank" rel="noopener">ClaroSports, final del Clausura 2026</a></li>
+    <li><a href="https://www.tudn.com/futbol/los-records-en-los-torneos-cortos-de-la-liga-mx-fotos" target="_blank" rel="noopener">TUDN, récords de torneos cortos</a></li>
+    <li><a href="https://www.mediotiempo.com/futbol/liga-mx/imagenes-los-maximos-goleadores-de-la-liga-mx?image=1" target="_blank" rel="noopener">Mediotiempo, máximos goleadores</a></li>
+    <li><a href="https://www.record.com.mx/futbol-liga-mx-noticias/liga-mx-quienes-han-sido-todos-los-campeones-de-goleo-en-la-historia-del" target="_blank" rel="noopener">Récord, campeones de goleo</a></li>
+    <li><a href="https://espndeportes.espn.com/futbol/mexico/nota/_/id/11085426/america-impuso-nuevo-record-de-goles-en-una-serie-de-liguilla-en-torneos-cortos" target="_blank" rel="noopener">ESPN, récord de goles en una liguilla</a></li>
+    <li><a href="https://www.clarosports.com/futbol/liga-mx/de-que-esta-hecho-y-cuanto-pesa-el-trofeo-de-la-final-de-la-liga-mx-diseno-y-detalles-para-el-america-vs-monterrey/" target="_blank" rel="noopener">ClaroSports, de qué está hecho el trofeo actual</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/2026%E2%80%9327_Liga_MX_season" target="_blank" rel="noopener">Wikipedia, temporada 2026-27 (formato y tabla)</a></li>
+    <li><a href="https://www.infobae.com/mexico/deportes/2026/10/08/liga-mx-asi-regresan-los-equipos-a-la-jornada-numero-11-tras-la-pausa-por-la-fecha-fifa/" target="_blank" rel="noopener">Infobae, tabla tras la jornada 10 y calendario de la jornada 11</a></li>
+    <li><a href="https://www.vivoelfutbol.com.mx/futbolmexicano.php" target="_blank" rel="noopener">Vivo el Fútbol, resultados de la jornada 11</a></li>
+    <li><a href="https://www.clarosports.com/futbol/liga-mx/favoritos-titulo-liga-mx-2026/" target="_blank" rel="noopener">ClaroSports, momios de campeón del Apertura 2026</a></li>
+    <li><a href="https://www.postadeportes.com/futbol/liga-mx/liga-mx-los-favoritos-para-coronarse-en-el-apertura-2026-segun-las-casas-de-apuestas/vl2053813" target="_blank" rel="noopener">Posta, favoritos según las casas de apuestas</a></li>
+    <li><a href="https://logos-world.net/mexican-primera-division-logo-liga-mx-logo/" target="_blank" rel="noopener">Logos World, historia de los logos de la liga</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Liga_MX" target="_blank" rel="noopener">Wikipedia, Liga MX (nombres y rebranding de 2012)</a></li>
+    <li><a href="https://www.rsssf.org/tablesm/mexchamp.html" target="_blank" rel="noopener">RSSSF, campeones de México con subcampeón y marcador</a></li>
+    <li><a href="https://www.90min.com/es/posts/los-10-entrenadores-con-mas-titulos-de-liga-mx-en-la-historia" target="_blank" rel="noopener">90min, entrenadores con más títulos</a></li>
+    <li><a href="https://www.nmas.com.mx/deportes/resultados-toluca-vs-tigres-quien-gano-final-liga-mx-2025-resumen-y-goles/" target="_blank" rel="noopener">N+, final del Apertura 2025</a></li>
+    <li><a href="https://www.mediotiempo.com/futbol/liga-mx/liga-mx-apertura-2026-resultados-goles-y-posiciones-tras-la-jornada-3" target="_blank" rel="noopener">Mediotiempo y Excélsior, Apertura 2026</a></li>
+  </ul>
+</footer>
+</div>
+
+<div class="himno-aviso" id="himno-aviso" hidden role="status"><span>♪ Toca en cualquier parte para escuchar el himno</span><button type="button" id="himno-aviso-cerrar" data-himno aria-label="No reproducir el himno">×</button></div>
+
+<script src="js/vendor/three.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
