@@ -6,11 +6,11 @@
 <title>Liga MX 1943–2026</title>
 <meta name="author" content="Ing. Mauricio Muñoz Bravo">
 <meta name="description" content="Infografía interactiva de la Liga MX: todos los campeones desde 1943, finales, sequías, comparador de clubes, mapa, trofeos en 3D y pronóstico del Apertura 2026.">
-<link rel="icon" href="assets/logos/logo-liga-mx.webp" type="image/webp">
+<link rel="icon" href="logo-liga-mx.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
 <header class="portada">
   <h1 class="solo-lectores">Liga MX 1943–2026 · Primera División de México, era profesional</h1>
   <div class="video-portada">
-    <video id="video-portada" poster="assets/video/portada-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="La historia de la Liga MX: de los inicios a la liguilla"><source src="assets/video/portada.webm" type="video/webm"><source src="assets/video/portada.mp4" type="video/mp4"></video>
+    <video id="video-portada" poster="portada-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="La historia de la Liga MX: de los inicios a la liguilla"><source src="portada.webm" type="video/webm"><source src="portada.mp4" type="video/mp4"></video>
   </div>
   <p class="entradilla">Cada franja es un campeonato, de izquierda a derecha, pintada con el color del club que levantó el trofeo. Pasa el dedo o el cursor por encima para leerlos uno por uno.</p>
   <div class="codigo-barras" id="codigo-barras" role="img" aria-label="Todos los campeones de la Liga MX en orden cronológico"></div>
@@ -267,17 +267,17 @@
       <input type="range" id="himno-volumen" min="0" max="100" value="70" step="5" aria-label="Volumen" data-himno>
     </div>
     <p class="himno-estado" id="himno-estado" aria-live="polite">El himno de la Liga MX suena al abrir la página. Puedes pausarlo o silenciarlo cuando quieras.</p>
-    <audio id="himno" preload="none" src="assets/audio/himno.mp3"></audio>
+    <audio id="himno" preload="none" src="himno.mp3"></audio>
   </div>
   <div class="logos-linea">
     <div class="logo-tarjeta">
-      <div class="logo-caja"><img src="assets/logos/logo-fmf-1a-div.webp" alt="Logo FMF Oficial 1a div: rectángulo mitad verde y mitad rojo con la silueta blanca de un futbolista"></div>
+      <div class="logo-caja"><img src="logo-fmf-1a-div.webp" alt="Logo FMF Oficial 1a div: rectángulo mitad verde y mitad rojo con la silueta blanca de un futbolista"></div>
       <div class="anios">1991 – 2012</div>
       <h3>FMF Oficial · 1a div</h3>
       <p>Un rectángulo mitad verde y mitad rojo con la silueta de un futbolista y un balón. Según Logos World fue la imagen de la liga durante más de veinte años.</p>
     </div>
     <div class="logo-tarjeta">
-      <div class="logo-caja"><img src="assets/logos/logo-liga-mx.webp" alt="Logo de la Liga MX: una gran X formada por dos marcas, una roja y otra verde, con cuatro piezas grises a los lados"></div>
+      <div class="logo-caja"><img src="logo-liga-mx.webp" alt="Logo de la Liga MX: una gran X formada por dos marcas, una roja y otra verde, con cuatro piezas grises a los lados"></div>
       <div class="anios">Desde julio de 2012</div>
       <h3>Liga MX</h3>
       <p>Se presentó con el nuevo nombre, un nuevo himno y el lema «Siente tu Liga», y se usó desde el Apertura 2012. Una X hecha con dos marcas, una roja y una verde, rodeada de cuatro piezas grises.</p>
@@ -353,7 +353,7 @@
 
 <div class="himno-aviso" id="himno-aviso" hidden role="status"><span>♪ Toca en cualquier parte para escuchar el himno</span><button type="button" id="himno-aviso-cerrar" data-himno aria-label="No reproducir el himno">×</button></div>
 
-<script src="js/vendor/three.min.js"></script>
-<script src="js/app.js"></script>
+<script src="three.min.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
